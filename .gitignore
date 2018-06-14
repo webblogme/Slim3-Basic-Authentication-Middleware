@@ -42,6 +42,7 @@ $RECYCLE.BIN/
 
 /node_modules/*
 /sql/temp/*
+package-lock.json
 
 # ignore files in folder foo
 sql/temp/*
