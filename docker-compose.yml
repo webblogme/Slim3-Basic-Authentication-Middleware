@@ -1,0 +1,10 @@
+version: "2"
+services:
+
+    php:
+      build: ./build/php
+      volumes:
+        - /htdocker/slim/:/var/www/html
+        - /var/www/html/vendor
+      ports:
+        - 80:80
