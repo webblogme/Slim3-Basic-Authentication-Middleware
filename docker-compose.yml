@@ -4,7 +4,7 @@ services:
     php:
       build: ./build/php
       volumes:
-        - /htdocker/slim/:/var/www/html
+        - /htdocker/slim3-starterpack/:/var/www/html
         - /var/www/html/vendor
       ports:
         - 80:80

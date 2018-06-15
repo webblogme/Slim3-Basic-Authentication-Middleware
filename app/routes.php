@@ -5,7 +5,7 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 /*-------first test-----*/
 
-/*$app->get('/', function (Request $request, Response $response) {
+$app->get('/', function (Request $request, Response $response) {
 
     $response->getBody()->write("Hello world from route - no trails");
 
@@ -13,7 +13,7 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 });
 
-$app->get('/home', function (Request $request, Response $response) {
+/*$app->get('/home', function (Request $request, Response $response) {
 
     $response->getBody()->write("Hello world from route - with home");
 
