@@ -1,35 +1,28 @@
 <?php 
 
-
 // Fetch DI Container
 $container = $app->getContainer();
 
 
-// Service factory for the ORM
+
+
+// DATABASE
 $container['db'] = function ($container) {
-	
-    $capsule = new \Illuminate\Database\Capsule\Manager;
-    $capsule->addConnection($container['settings']['db']);
 
-    $capsule->setAsGlobal();
-    $capsule->bootEloquent();
+	$capsule = new \Illuminate\Database\Capsule\Manager;
+	$capsule->addConnection($container['settings']['db']);
 
-    return $capsule;
+	$capsule->setAsGlobal();
+	$capsule->bootEloquent();
+
+	return $capsule;
 };
 
 
-
-
-//https://www.youtube.com/watch?v=70IkLMkPyPs
-
-
-
-
-
-
-// Register Twig View helper
+// TWIG
 $container['view'] = function ($c) {
-    $twig = new \Slim\Views\Twig(__DIR__ . '/../resources/views', [
+    
+	$twig = new \Slim\Views\Twig(__DIR__ . '/../resources/views', [
         //'cache' => __DIR__ . '/../cache',
 		'debug' => true,
     ]);
@@ -45,8 +38,22 @@ $container['view'] = function ($c) {
 };
 
 
+// MONOLOG
+$container['logger'] = function ($c) {
+    $settings = $c->get('settings');
+    $logger = new Monolog\Logger($settings['logger']['name']);
+    $logger->pushProcessor(new Monolog\Processor\UidProcessor());
+    $logger->pushHandler(new Monolog\Handler\StreamHandler($settings['logger']['path'], Monolog\Logger::DEBUG));
+    return $logger;
+};
+
+
+// CONTROLLER
+$container['UserController'] = function ($container) {
+	return new \App\Controllers\UserController();
+};
 
 
 
 
- ?>
+?>

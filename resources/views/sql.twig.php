@@ -9,10 +9,9 @@
 
 {% endblock %}
 
-
 {% block content %}
 
-{% set debug = 0 %}
+{% set debug = 1 %}
 
 <h1>{{name}}</h1>
 

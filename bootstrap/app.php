@@ -1,4 +1,4 @@
-<?php 
+<?php session_start();
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -6,11 +6,15 @@ $app = new \Slim\App([
 
 	'settings' => [ // Slim Settings
 		'displayErrorDetails' => true,
-		 'determineRouteBeforeAppMiddleware' => false,
+		'determineRouteBeforeAppMiddleware' => false,
+	'logger' => [
+		'name' => 'app',
+		'path' => __DIR__ . '/../resources/app.log',
+	],
 	'db' => [
 		'driver' => 'mysql',
-		'host' => '192.168.1.76',
-		'database' => 'phuketmarine',
+		'host' => '192.168.99.100',
+		'database' => 'phuket_mop',
 		'username' => 'root',
 		'password' => 'root',
 		'charset'   => 'utf8',
@@ -22,12 +26,7 @@ $app = new \Slim\App([
 
 ]);
 
-
-
-
-
 require __DIR__ . '/../bootstrap/dependencies.php';
-
 require __DIR__ . '/../app/routes.php';
 
 ?>

@@ -3,35 +3,22 @@
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
-/*-------first test-----*/
+$app->get('/', 'UserController:home');
+$app->get('/contact', 'UserController:contact');
 
-$app->get('/', function (Request $request, Response $response) {
 
-    $response->getBody()->write("Hello world from route - no trails");
 
-    return $response;
-
-});
-
-/*$app->get('/home', function (Request $request, Response $response) {
-
-    $response->getBody()->write("Hello world from route - with home");
-
-});
-
-// Render from string
-$app->get('/hi/{name}', function ($request, $response, $args) {
-    $str = $this->view->fetchFromString('<p>Hi, my name is {{ name }}.</p>', [
-        'name' => $args['name']
-    ]);
-    $response->getBody()->write($str);
+//TEST LOG
+$app->get('/hello/{name}', function (Request $request, Response $response){
+    $name = $request->getAttribute('name');
+    $response->getBody()->write("Hello, $name");
+    $this->get('logger')->info("mySlim '/' route");
     return $response;
 });
 
-
-*/
 
 /*-------second test with template twig-----*/
+
 
 // Define named route
 $app->get('/do/{pagename}/{pagenumber}', function ($request, $response, $args) {

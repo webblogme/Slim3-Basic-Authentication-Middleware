@@ -2,9 +2,9 @@ version: "2"
 services:
 
     php:
-      build: ./build/php
+      build: ./docker
       volumes:
         - /htdocker/slim3-starterpack/:/var/www/html
-        - /var/www/html/vendor
+       #- /var/www/html/vendor
       ports:
         - 80:80

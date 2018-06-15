@@ -40,6 +40,7 @@ $RECYCLE.BIN/
 # Custom folder
 # =========================
 
+/vendor/*
 /node_modules/*
 /sql/temp/*
 package-lock.json
