@@ -1,5 +1,8 @@
 <?php 
 
+use Respect\Validation\Validator as v;
+
+
 // Fetch DI Container
 $container = $app->getContainer();
 
@@ -19,7 +22,7 @@ $container['db'] = function ($container) use ($capsule) {
 // TWIG
 $container['view2'] = function ($c) {
     
-	$twig = new \Slim\Views\Twig(__DIR__ . '/../resources/views', [
+	$twig = new \Slim\Views\Twig(__DIR__ . '/../resources', [
         //'cache' => __DIR__ . '/../cache',
 		'debug' => true,
     ]);
@@ -37,7 +40,7 @@ $container['view2'] = function ($c) {
 // TWIG
 $container['view'] = function ($container) {
     
-	$view = new \Slim\Views\Twig(__DIR__ . '/../resources/views', [
+	$view = new \Slim\Views\Twig(__DIR__ . '/../resources', [
 		'cache' => false,
     ]);
 
@@ -61,14 +64,34 @@ $container['logger'] = function ($c) {
 
 
 // CONTROLLER
+
+$container['validator'] = function ($container) {
+	return new \App\Validation\Validator($container);
+};
+
 $container['HomeController'] = function ($container) {
 	return new \App\Controllers\HomeController($container);
 };
 
-
-$container['UserController'] = function ($c) {
-	return new \App\Controllers\UserController();
+$container['AuthController'] = function ($container) {
+	return new \App\Controllers\Auth\AuthController($container);
 };
+
+$container['csrf'] = function ($container) {
+	return new \Slim\Csrf\Guard;
+};
+
+$app->add(new \App\Middleware\ValidationErrorsMiddleware($container));
+$app->add(new \App\Middleware\OldinputMiddleware($container));
+$app->add(new \App\Middleware\CsrfViewMiddleware($container));
+
+$app->add($container->csrf);
+
+v::with('App\\Validation\\Rules\\');
+
+/*$container['UserController'] = function ($c) {
+	return new \App\Controllers\UserController();
+};*/
 
 
 

@@ -623,6 +623,24 @@ p {
   font-size: 1em;
   margin-top: 10px;
 }
+.navbar {
+  background: #111;
+}
+.navbar .navbar-header a {
+  color: #f90;
+  font-weight: bold;
+}
+.navbar .navbar-header a:hover,
+.navbar .navbar-header a:focus {
+  color: #fff;
+}
+.navbar nav a {
+  color: #eeeeee;
+}
+.navbar nav a:hover,
+.navbar nav a:focus {
+  color: #222;
+}
 /*! fancyBox v2.1.5 fancyapps.com | fancyapps.com/fancybox/#license */
 .fancybox-wrap,
 .fancybox-skin,

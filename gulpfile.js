@@ -74,7 +74,6 @@ var projectFolder = './';
 var projectPHPWatchFiles = [
 	'./app/**/*.php',
 	'./bootstrap/**/*.php',
-	'./build/**/*.php',
 	'./public/**/*.php',
 	'./resources/**/*.php',
 	];
@@ -176,7 +175,7 @@ var less_en = [
 gulp.task( 'browser-sync', function() {
   browserSync.init( {
 
-	proxy: projectURL,
+	proxy: projectURL+'/public',
 	snippetOptions: {rule:{match: /$/ }},
 	browser: 'chrome',
 	logLevel: 'info', //debug

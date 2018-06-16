@@ -3,12 +3,37 @@
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
+$app->get('/', 'HomeController:index')->setName('home');
+
+$app->get('/auth/signup', 'AuthController:getSignUp')->setName('auth.signup');
+$app->post('/auth/signup', 'AuthController:postSignUp');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #$app->get('/', 'UserController:home');
 #$app->get('/contact', 'UserController:contact');
 
-$app->get('/', 'HomeController:index');
 
 
+/*$app->get('/', 'HomeController:index', function (){
+    $this->get('logger')->info("home '/' route");
+    //return $response;
+});*/
 
 //TEST LOG
 $app->get('/hello/{name}', function (Request $request, Response $response){

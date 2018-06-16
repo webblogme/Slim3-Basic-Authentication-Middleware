@@ -3,7 +3,9 @@ down: stop
 
 start:
 	docker-compose up -d
-	#gulp
+	
+build:
+	docker-compose build
 
 stop:
 	docker-compose down

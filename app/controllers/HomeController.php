@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\User;
 use Slim\Views\Twig as View;
 
 
@@ -9,13 +10,22 @@ class HomeController extends Controller {
 
 	public function index($request, $response) {
 		
-        $article = $this->db->table('article')->find(1);
+        //$users = $this->db->table('users')->find(1);
+		//$users = User::where('email', 'y_yammy@hotmail.com')->first();
 		
-		var_dump($article->summary);
+		/*User::create([
+			'name' => 'webblogme',
+			'email' => 'allyouneedforweb@gmail.com',
+			'password' => '123',
+		]);*/
+		
+		
+		//var_dump($users);
+		//die();
 
-		print("<pre>"); print_r($article); print("</pre>");
+		//print("<pre>"); var_dump($users); print("</pre>");
 		
-		return $this->container->view->render($response, 'home2.twig.php');
+		return $this->container->view->render($response, 'home.twig.php');
 	}
 
 }

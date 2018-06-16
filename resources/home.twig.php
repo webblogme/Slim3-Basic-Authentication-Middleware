@@ -1,4 +1,4 @@
-{% extends "layout.twig.php" %}
+{% extends "templates/layout.twig.php" %}
 
 {% block seo %}
 
@@ -9,11 +9,12 @@
 
 {% endblock %}
 
+{% block pagehead %}
+<h1>home</h1>
+{% endblock %}
 
 {% block content %}
 
-
-<h1>home</h1>
 
 
 {% endblock %}
