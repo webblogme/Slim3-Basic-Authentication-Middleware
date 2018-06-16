@@ -5,6 +5,8 @@ Build a website with Slim framework
 ### Package include
 * [Slim](https://www.slimframework.com/) - Micro framework for PHP
 * [Twig](https://twig.symfony.com/) - A modern template engine for PHP
+* [Illuminate Database](https://github.com/illuminate/database) - Eloquent database query
+* [monolog](https://github.com/Seldaek/monolog) - Logging for PHP
 * [Bootstrap3](http://bootstrapdocs.com/v3.0.3/docs/getting-started/) - CSS Framework
 * [Gulp](https://gulpjs.com/) - Javascript task runner that lets you automate tasks
 * [Less](http://lesscss.org/) - Dynamic preprocessor style sheet language
@@ -15,6 +17,7 @@ Build a website with Slim framework
 ### Requirement
 You should have these install on your machine
 * Docker version 18.03
+* Composer (for fast build / do use it outside docker!)
 * node v9.3.0
 * Git
 
