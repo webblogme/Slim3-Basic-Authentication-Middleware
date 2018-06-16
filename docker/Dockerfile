@@ -46,7 +46,7 @@ RUN touch /usr/local/etc/php/conf.d/uploads.ini \
     && echo "max_execution_time = 600;" >> /usr/local/etc/php/conf.d/uploads.ini
 
 #LOAD PDO FOR MEDOO
-#RUN docker-php-ext-install pdo pdo_mysql
+RUN docker-php-ext-install pdo pdo_mysql
 
 #LOAD MYSQLI FOR WORDPRESS
 #RUN docker-php-ext-install mysql mysqli pdo pdo_mysql

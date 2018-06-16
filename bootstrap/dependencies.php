@@ -4,23 +4,20 @@
 $container = $app->getContainer();
 
 
-
-
 // DATABASE
-$container['db'] = function ($container) {
+$capsule = new \Illuminate\Database\Capsule\Manager;
+$capsule->addConnection($container['settings']['db']);
 
-	$capsule = new \Illuminate\Database\Capsule\Manager;
-	$capsule->addConnection($container['settings']['db']);
+$capsule->setAsGlobal();
+$capsule->bootEloquent();
 
-	$capsule->setAsGlobal();
-	$capsule->bootEloquent();
-
+$container['db'] = function ($container) use ($capsule) {
 	return $capsule;
 };
 
 
 // TWIG
-$container['view'] = function ($c) {
+$container['view2'] = function ($c) {
     
 	$twig = new \Slim\Views\Twig(__DIR__ . '/../resources/views', [
         //'cache' => __DIR__ . '/../cache',
@@ -37,6 +34,21 @@ $container['view'] = function ($c) {
     return $twig;
 };
 
+// TWIG
+$container['view'] = function ($container) {
+    
+	$view = new \Slim\Views\Twig(__DIR__ . '/../resources/views', [
+		'cache' => false,
+    ]);
+
+    $view->addExtension(new \Slim\Views\TwigExtension(
+		$container->router,
+		$container->request->getUri()
+	));
+	
+    return $view;
+};
+
 
 // MONOLOG
 $container['logger'] = function ($c) {
@@ -49,7 +61,12 @@ $container['logger'] = function ($c) {
 
 
 // CONTROLLER
-$container['UserController'] = function ($container) {
+$container['HomeController'] = function ($container) {
+	return new \App\Controllers\HomeController($container);
+};
+
+
+$container['UserController'] = function ($c) {
 	return new \App\Controllers\UserController();
 };
 

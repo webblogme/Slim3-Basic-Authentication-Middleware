@@ -3,15 +3,17 @@
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
-$app->get('/', 'UserController:home');
-$app->get('/contact', 'UserController:contact');
+#$app->get('/', 'UserController:home');
+#$app->get('/contact', 'UserController:contact');
+
+$app->get('/', 'HomeController:index');
 
 
 
 //TEST LOG
 $app->get('/hello/{name}', function (Request $request, Response $response){
-    $name = $request->getAttribute('name');
-    $response->getBody()->write("Hello, $name");
+	$name = $request->getAttribute('name');
+    $response->getBody()->write("Hello, ".$name);
     $this->get('logger')->info("mySlim '/' route");
     return $response;
 });

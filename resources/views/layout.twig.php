@@ -6,8 +6,8 @@
 
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-		<link rel="stylesheet" type="text/css" href="{{ base_url() }}/public/assets/css/bootstrap.min.css" />
-		<link rel="stylesheet" type="text/css" href="{{ base_url() }}/public/assets/css/css.bs3.en.css" />
+		<link rel="stylesheet" type="text/css" href="{{ base_url() }}/assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="{{ base_url() }}/assets/css/css.bs3.en.css" />
 
 	</head>
 
@@ -23,7 +23,7 @@
 	<div class="row">
 		<div class="col-xs-12">
 			{% block footer %}
-				&copy; Copyright {{ "now"|date('Y', timezone="Asia/Bangkok") }} by <a href="http://domain.invalid/">you</a>.
+				&copy; Copyright {{ "now"|date('d m Y H:i', timezone="Asia/Bangkok") }} by <a href="http://domain.invalid/">you</a>.
 			{% endblock %}
 		</div>
 	
