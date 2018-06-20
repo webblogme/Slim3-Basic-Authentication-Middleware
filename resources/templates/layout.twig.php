@@ -24,7 +24,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a href="../" class="navbar-brand">Bootstrap</a>
+          <a href="{{ path_for('home') }}" class="navbar-brand">Bootstrap</a>
         </div>
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
           <ul class="nav navbar-nav">
@@ -37,8 +37,13 @@
             
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="{{ path_for('auth.signup') }}" onclick="_gaq.push(['_trackEvent', 'Navbar', 'Community links', 'Expo']);">Sign up</a></li>
-            <!--<li><a href="http://blog.getbootstrap.com" onclick="_gaq.push(['_trackEvent', 'Navbar', 'Community links', 'Blog']);">Blog</a></li>-->
+		  {% if auth.check %}
+			<li><a>Howdy, {{ auth.user.name }}</a></li>
+			<li><a href="{{ path_for('auth.signout') }}">Log out</a></li>
+				{% else %}
+			<li><a href="{{ path_for('auth.signup') }}">Sign up</a></li>
+			<li><a href="{{ path_for('auth.signin') }}">Sign in</a></li>
+			{% endif %}
           </ul>
         </nav>
       </div>

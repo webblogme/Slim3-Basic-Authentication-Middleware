@@ -18,6 +18,10 @@ $container['db'] = function ($container) use ($capsule) {
 	return $capsule;
 };
 
+$container['auth'] = function ($container) {
+	return new \App\Auth\Auth;
+};
+
 
 // TWIG
 $container['view2'] = function ($c) {
@@ -48,6 +52,13 @@ $container['view'] = function ($container) {
 		$container->router,
 		$container->request->getUri()
 	));
+	
+	$view->getEnvironment()->addGlobal('auth', [
+	
+		'check' => $container->auth->check(),
+		'user' => $container->auth->user(),
+	
+	]);
 	
     return $view;
 };
@@ -80,6 +91,8 @@ $container['AuthController'] = function ($container) {
 $container['csrf'] = function ($container) {
 	return new \Slim\Csrf\Guard;
 };
+
+
 
 $app->add(new \App\Middleware\ValidationErrorsMiddleware($container));
 $app->add(new \App\Middleware\OldinputMiddleware($container));
