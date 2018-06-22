@@ -22,6 +22,10 @@ $container['auth'] = function ($container) {
 	return new \App\Auth\Auth;
 };
 
+$container['flash'] = function ($container) {
+	return new \Slim\Flash\Messages;
+};
+
 
 // TWIG
 $container['view2'] = function ($c) {
@@ -60,6 +64,11 @@ $container['view'] = function ($container) {
 	
 	]);
 	
+	$view->getEnvironment()->addGlobal('flash',  $container->flash);
+	
+	$view->addExtension(new Twig_Extension_Debug());
+	$view->addExtension(new Twig_Extensions_Extension_Text());
+	
     return $view;
 };
 
@@ -86,6 +95,10 @@ $container['HomeController'] = function ($container) {
 
 $container['AuthController'] = function ($container) {
 	return new \App\Controllers\Auth\AuthController($container);
+};
+
+$container['PasswordController'] = function ($container) {
+	return new \App\Controllers\Auth\PasswordController($container);
 };
 
 $container['csrf'] = function ($container) {

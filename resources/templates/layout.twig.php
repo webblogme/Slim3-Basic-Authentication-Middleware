@@ -39,6 +39,7 @@
           <ul class="nav navbar-nav navbar-right">
 		  {% if auth.check %}
 			<li><a>Howdy, {{ auth.user.name }}</a></li>
+			<li><a href="{{ path_for('auth.password.change') }}">Change password</a></li>
 			<li><a href="{{ path_for('auth.signout') }}">Log out</a></li>
 				{% else %}
 			<li><a href="{{ path_for('auth.signup') }}">Sign up</a></li>
@@ -54,11 +55,15 @@
 	  
 	  <div class="col-xs-12 mb-20">
 	  
+		{% include 'templates/partials/flash.twig.php' %}
+	  
 		{% block pagehead %}{% endblock %}
 
 	</div>
 	  
 	  <div class="col-xs-12">
+	  
+		
 		
 		{% block content %}{% endblock %}      
 

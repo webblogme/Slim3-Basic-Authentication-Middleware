@@ -12,12 +12,15 @@ class AuthController extends Controller {
 
 		$this->auth->logout();
 		
+		$this->flash->addMessage('info','Logged out!');
+		
 		return $response->withRedirect($this->router->pathFor('home'));
 		
 	}
 	
 	public function getSignIn($request, $response) {
 
+		
 		return $this->view->render($response, 'auth/signin.twig.php');
 		
 	}
@@ -33,7 +36,13 @@ class AuthController extends Controller {
 		
 		if(!$auth) {
 			
+			$this->flash->addMessage('danger','Could not sign you in with those details...');
+			
 			return $response->withRedirect($this->router->pathFor('auth.signin'));
+			
+		} else {
+			
+			$this->flash->addMessage('info','Welcome back!');
 			
 		}
 		
@@ -61,6 +70,8 @@ class AuthController extends Controller {
 		
 		if($validation->failed()) {
 
+			$this->flash->addMessage('danger','Validation failed please check input');
+			
 			return $response->withRedirect($this->router->pathFor('auth.signup'));
 
 		}
@@ -74,6 +85,8 @@ class AuthController extends Controller {
 		
 		//if ($user->exists) { echo 555; }
 		//var_dump($user);die();
+		
+		$this->flash->addMessage('info','You have been been signed up!');
 		
 		// IMMEDIATELY LOGIN WHEN SIGN UP
 		$this->auth->attempt($user->email,$request->getParam('password'));

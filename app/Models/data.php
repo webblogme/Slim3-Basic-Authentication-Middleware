@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model {
+class Data extends Model {
 	
-	protected $table = 'users';
-	protected $fillable = ['name','email','password'];
+	protected $table = 'data';
+	protected $fillable = ['ip','action','loginfo',,'mailinfo'];
 	
 	public function setPassword() {
 		$this->update(['password'=> password_hash($password, PASSWORD_DEFAULT)]);
