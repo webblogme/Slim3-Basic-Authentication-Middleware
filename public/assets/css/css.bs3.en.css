@@ -641,6 +641,38 @@ p {
 .navbar nav a:focus {
   color: #222;
 }
+/*------pagination------*/
+.numbers {
+  margin-top: 10px;
+}
+.numbers a {
+  font-size: 1em;
+  margin-bottom: 5px;
+  text-align: center;
+  text-decoration: none;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  display: inline-block;
+  background-colour: #fff;
+  border: 1px solid #222;
+  padding: 3px 10px 3px;
+}
+.numbers a.selected {
+  color: #ff0;
+  font-weight: bold;
+  background: #f00;
+}
+.numbers a.pagination_button {
+  text-align: center;
+  white-space: nowrap;
+  width: 80px;
+}
+.numbers a:hover,
+.numbers a:active {
+  color: #fff;
+  background: #f00;
+}
 /*! fancyBox v2.1.5 fancyapps.com | fancyapps.com/fancybox/#license */
 .fancybox-wrap,
 .fancybox-skin,

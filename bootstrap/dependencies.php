@@ -18,6 +18,10 @@ $container['db'] = function ($container) use ($capsule) {
 	return $capsule;
 };
 
+/*$container['data'] = function ($container) use ($capsule) {
+	return $capsule;
+};*/
+
 $container['auth'] = function ($container) {
 	return new \App\Auth\Auth;
 };
@@ -27,29 +31,18 @@ $container['flash'] = function ($container) {
 };
 
 
-// TWIG
-$container['view2'] = function ($c) {
-    
-	$twig = new \Slim\Views\Twig(__DIR__ . '/../resources', [
-        //'cache' => __DIR__ . '/../cache',
-		'debug' => true,
-    ]);
-   
-    // Instantiate and add Slim specific extension
-    $router = $c->get('router');
-    $uri = \Slim\Http\Uri::createFromEnvironment(new \Slim\Http\Environment($_SERVER));
-    $twig->addExtension(new \Slim\Views\TwigExtension($router, $uri));
-	$twig->addExtension(new Twig_Extension_Debug());
-	$twig->addExtension(new Twig_Extensions_Extension_Text());
+// Instantiate and add Slim specific extension
+//$router = $c->get('router');
+//$uri = \Slim\Http\Uri::createFromEnvironment(new \Slim\Http\Environment($_SERVER));
+//$twig->addExtension(new \Slim\Views\TwigExtension($router, $uri));
 
-    return $twig;
-};
 
 // TWIG
 $container['view'] = function ($container) {
     
 	$view = new \Slim\Views\Twig(__DIR__ . '/../resources', [
 		'cache' => false,
+		'debug' => true,
     ]);
 
     $view->addExtension(new \Slim\Views\TwigExtension(

@@ -23,3 +23,34 @@ p {
 		}
 	}
 }
+
+/*------pagination------*/
+
+.numbers {
+	margin-top: 10px;
+	a { 
+		font-size: 1em;
+		margin-bottom: 5px;
+		text-align: center;
+		text-decoration: none;
+		.border-radius(3);
+		display: inline-block; 
+		background-colour:#fff;
+		border:1px solid #222;
+		padding:3px 10px 3px; 
+		&.selected { 
+			color: #ff0;
+			font-weight: bold;
+			background:@red;
+		}
+		&.pagination_button { 
+			text-align: center;
+			white-space: nowrap;
+			width: 80px;
+		}
+		&:hover, &:active {
+			color: #fff; 
+			background:@red;
+		}
+	}
+}

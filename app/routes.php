@@ -7,6 +7,8 @@ use App\Middleware\AuthMiddleware;
 use App\Middleware\GuestMiddleware;
 
 $app->get('/', 'HomeController:index')->setName('home');
+$app->get('/posts', 'HomeController:post')->setName('data.all');
+$app->get('/posts/{pagenumber}', 'HomeController:post');
 
 $app->group('', function(){
 

@@ -10,41 +10,16 @@
 {% endblock %}
 
 {% block pagehead %}
-<h1>home</h1>
+<h1>Home</h1>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui provident ad, eligendi minus delectus accusamus quaerat, ipsum, voluptate in aperiam dignissimos fuga harum dicta voluptatibus pariatur asperiores, nulla beatae perferendis!</p>
+
+<p><a href="{{ path_for('data.all') }}" title="All datas" class="btn btn-primary btn-lg" >All datas</a></p>
+
+
 {% endblock %}
 
 {% block content %}
-
-{% set debug = 1 %}
-{% if debug == 1 %}
-<pre>{{ dump(datas) }}</pre>
-{% endif %}
-
-<table class="table table-condensed table-stripe mt-20">
-
-<thead>
-<tr>
-<th>NO.</th>
-{% for key in datas.0|keys %}
-<th>{{key|replace({'register_date': "register"})|upper }}</th>
-{% endfor %}
-</tr>
-</thead>
-
-{% for item in datas %}
-<tr>
-<td>{{ loop.index }}</td>
-<td>{{ item.name }}</td>
-<td>{{ item.email }}</td>
-<td>{{ item.register_date|date("j F o \\o\\n h:i") }}</td>
-<td>{{ item.desc|striptags|truncate(20, true) }}</td>
-<td>{{ item.age }}</td>
-</tr>
-{% endfor %}
-
-</table>
-
-
 
 
 
