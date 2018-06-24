@@ -40,10 +40,10 @@ $RECYCLE.BIN/
 # Custom folder
 # =========================
 
-/vendor/*
+www/vendor/*
 /node_modules/*
 /sql/temp/*
-package-lock.json
+www/package-lock.json
 
 # ignore files in folder foo
 sql/temp/*
