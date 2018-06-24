@@ -30,10 +30,10 @@ You should have these install on your machine
 https://www.youtube.com/watch?v=RhcQXFeor9g&index=1&list=PLfdtiltiRHWGc_yY90XRdq6mRww042aEC
 ```
 
-Before start
+### Before start
 ```
-* Check volume path before run docker-compose
-* SQL database needs to import before run this package
-* Configure db connection at \www\bootstrap\app.php
-* Default page = http://localhost/public
+Check volume path before run docker-compose
+SQL database needs to import before run this package
+Configure db connection at \www\bootstrap\app.php
+Default page = http://localhost/public
 ```
